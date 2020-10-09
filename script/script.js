@@ -7,3 +7,4 @@ let period;
 
 alert ('Any text');
 console.log ('Any text');
+console.log('Check');
