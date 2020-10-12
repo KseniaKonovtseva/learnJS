@@ -1,9 +1,9 @@
-let money = 30000;
-let income = 'Фриланс';
-let addExpenses = 'Интернет, кофе, курсы';
-let deposit = true;
-let mission = 60000;
-let period = 6;
+const money = 30000;
+const income = 'Фриланс';
+const addExpenses = 'Интернет, кофе, курсы';
+const deposit = true;
+const mission = 60000;
+const period = 6;
 let budgetDay = money/30;
 
 console.log(typeof money);
