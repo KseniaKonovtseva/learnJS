@@ -27,8 +27,7 @@ function getExpensesMonth(amount1, amount2){
 console.log('Расходы за месяц ' + getExpensesMonth());
 
 function getAccumulatedMonth(){
-  const accum = (+money) - getExpensesMonth();
-  return accum;
+  return (+money) - getExpensesMonth();
 }
 
 const accumulatedMonth = getAccumulatedMonth();
@@ -40,8 +39,7 @@ function getTargetMonth(){
 console.log('Цель будет достигнута за: ' + getTargetMonth() + ' месяцев');
 
 function budgetDay(){
-  const dayCoins = Math.floor(accumulatedMonth / 30);
-  return dayCoins;
+  return Math.floor(accumulatedMonth / 30);
 }
 console.log('Бюджет на день ' + budgetDay() + ' чеканных монет');
 
