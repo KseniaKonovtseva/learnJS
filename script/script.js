@@ -4,9 +4,8 @@ const isNumber = function(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-let money,
-  amount,
-  question;
+let money;
+
 const start = function() {
   money = prompt('Ваш месячный доход?');
   while (!isNumber(money)) {
@@ -32,33 +31,38 @@ const appData = {
     const addExpenses = prompt('Перечислите возможные расходы за расчитываемый период через запятую', 'Кв, проездной, кредит');
       appData.addExpenses = addExpenses.toLowerCase().split(', ');
       appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    
+      let amount;
+      for (let i = 0; i < 2; i++) {
+        let question = prompt('Введите обязательную статью расходов?');
+  
+        while (!isNumber(amount)) {
+          amount = prompt('Во сколько это обойдется?');
+        }
+        appData.expenses[question] = +amount;
+        question = '';
+        amount = '';
+    }
+    return console.log(this.expenses);
+    
   },
 
   getExpensesMonth: function(){
-    let sum = 0;
-
-    for (let i = 0; i < 2; i++) {
-      question = prompt('Введите обязательную статью расходов?');
-
-      while (!isNumber(amount)) {
-        amount = prompt('Во сколько это обойдется?');
-      }
-      appData.expenses[question] = amount;
-      question = '';
-      sum += +amount;
-      amount = '';
-
+    for (let key in this.expenses){
+      this.expensesMonth += this.expenses[key];
     }
-    console.log(appData.expenses);
-    return sum;
+    return ('Расходы за месяц ' + this.expensesMonth);
   },
-  
-  getAccumulatedMonth: function(){
-    return money - expensesAmount;
+  //Не понимаю, как написать эту функцию без money - внешней переменной, которую по заданию нельзя использовать
+  getBudget: function(){
+    this.budgetMonth = money - this.expensesMonth;
+    //console.log('Бюджет на месяц: ' + this.budgetMonth);
+    this.budgetDay = this.budgetMonth / 30;
+    //console.log('Бюджет на день: ' + Math.floor(this.budgetDay));
   },
 
   getTargetMonth: function(){
-    const getTarget = Math.ceil(appData.mission / accumulatedMonth);
+    const getTarget = Math.ceil(appData.mission / this.budgetMonth);
     if (getTarget > 0) {
       return ('Цель будет достигнута за: ' + getTarget + ' месяцев');
     } else {
@@ -66,16 +70,12 @@ const appData = {
     }
   },
 
-  budgetDay: function(){
-    return Math.floor(accumulatedMonth / 30);
-  },
-
   getStatusIncome: function(){
-    if (appData.budgetDay() >= 1200) {
+    if (this.budgetDay >= 1200) {
       return ('У вас высокий уровень дохода');
-    } else if (appData.budgetDay() >= 600) {
+    } else if (this.budgetDay >= 600) {
       return ('У вас средний уровень дохода');
-    } else if (appData.budgetDay() >= 0) {
+    } else if (this.budgetDay >= 0) {
       return ('К сожалению, у вас уровень дохода ниже среднего');
     } else {
       return ('Что-то пошло не так...');
@@ -84,19 +84,11 @@ const appData = {
 };
 
 appData.asking();
-
-const expensesAmount = appData.getExpensesMonth();
-
-console.log('Расходы за месяц ' + expensesAmount);
-
-const accumulatedMonth = appData.getAccumulatedMonth();
-console.log(accumulatedMonth);
-
+console.log(appData.getExpensesMonth());
+appData.getBudget();
 console.log(appData.getTargetMonth());
-
-/*appData.budgetDay = function(){
-  return Math.floor(accumulatedMonth / 30);
-};*/
-console.log('Бюджет на день ' + appData.budgetDay() + ' чеканных монет');
-
 console.log(appData.getStatusIncome());
+
+for (let key in appData){
+  console.log('Наша программа включает в себя данные: КЛЮЧ' + key + 'ЗНАЧЕНИЕ' + appData[key]);
+}
