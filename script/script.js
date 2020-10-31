@@ -35,7 +35,9 @@ const appData = {
       let amount;
       for (let i = 0; i < 2; i++) {
         let question = prompt('Введите обязательную статью расходов?');
-  
+        if (question === null) {
+          return;
+        }
         while (!isNumber(amount)) {
           amount = prompt('Во сколько это обойдется?');
         }
@@ -43,8 +45,6 @@ const appData = {
         question = '';
         amount = '';
     }
-    return console.log(this.expenses);
-    
   },
 
   getExpensesMonth: function(){
@@ -53,12 +53,10 @@ const appData = {
     }
     return ('Расходы за месяц ' + this.expensesMonth);
   },
-  //Не понимаю, как написать эту функцию без money - внешней переменной, которую по заданию нельзя использовать
+
   getBudget: function(){
-    this.budgetMonth = money - this.expensesMonth;
-    //console.log('Бюджет на месяц: ' + this.budgetMonth);
-    this.budgetDay = this.budgetMonth / 30;
-    //console.log('Бюджет на день: ' + Math.floor(this.budgetDay));
+    this.budgetMonth = this.budget - this.expensesMonth;
+    this.budgetDay = Math.floor(this.budgetMonth / 30);
   },
 
   getTargetMonth: function(){
@@ -90,5 +88,5 @@ console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 
 for (let key in appData){
-  console.log('Наша программа включает в себя данные: КЛЮЧ' + key + 'ЗНАЧЕНИЕ' + appData[key]);
+  console.log('Наша программа включает в себя данные: ' + key + appData[key]);
 }
