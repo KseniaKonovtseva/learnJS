@@ -120,7 +120,7 @@ const appData = {
     return appData.budgetMonth * appData.period;
   }
 };
-
+/*
 appData.asking();
 console.log('Расходы за месяц ' + appData.getExpensesMonth());
 appData.getBudget();
@@ -128,7 +128,22 @@ console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 appData.getInfoDeposit();
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
+*/
+const startBtn = document.getElementById('start');
+console.log(startBtn);
 
-/*for (let key in appData){
-  console.log('Наша программа включает в себя данные: ' + key + appData[key]);
-}*/
+const plusBtnFirst = document.getElementsByTagName('button')[0];
+console.log(plusBtnFirst);
+const plusBtnSecond = document.getElementsByTagName('button')[1];
+console.log(plusBtnSecond);
+
+const checkBox = document.querySelector('#deposit-check');
+console.log(checkBox);
+
+const incomes = document.querySelectorAll('.additional_income-item');
+const incomeOne = incomes.item(0);
+console.log(incomeOne);
+const incomeTwo = incomes.item(1);
+console.log(incomeTwo);
+
+console.log(document.getElementsByClassName('-value'));
