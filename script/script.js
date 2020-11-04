@@ -146,4 +146,22 @@ console.log(incomeOne);
 const incomeTwo = incomes.item(1);
 console.log(incomeTwo);
 
-console.log(document.getElementsByClassName('-value'));
+const value = document.getElementsByClassName('result-total');
+console.log(value);
+
+const salary = document.querySelector('.salary-amount');
+console.log(salary);
+const incomeTitle = document.querySelector('input.income-title');
+console.log(incomeTitle);
+const incomeAmount = document.querySelector('input.income-amount');
+console.log(incomeAmount);
+const expensesTitle = document.querySelector('input.expenses-title');
+console.log(expensesTitle);
+const expensesAmount = document.querySelector('input.expenses-amount');
+console.log(expensesAmount);
+const optionalExpenses = document.querySelector('input.additional_expenses-item');
+console.log(optionalExpenses);
+const targetAmount = document.querySelector('input.target-amount');
+console.log(targetAmount);
+const range = document.querySelector('input.period-select');
+console.log(range);
