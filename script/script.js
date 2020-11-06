@@ -146,8 +146,20 @@ console.log(incomeOne);
 const incomeTwo = incomes.item(1);
 console.log(incomeTwo);
 
-const value = document.getElementsByClassName('result-total');
-console.log(value);
+const budgetMonthValue = document.getElementsByClassName('budget_month-value');
+console.log(budgetMonthValue);
+const budgetDayValue = document.getElementsByClassName('budget_day-value');
+console.log(budgetDayValue);
+const expensesMonthValue = document.getElementsByClassName('expenses_month-value');
+console.log(expensesMonthValue);
+const addIncomeValue = document.getElementsByClassName('additional_income-value');
+console.log(addIncomeValue);
+const addExpensesValue = document.getElementsByClassName('additional_expenses-value');
+console.log(addExpensesValue);
+const incomePeriodValue = document.getElementsByClassName('income_period-value');
+console.log(incomePeriodValue);
+const targetMonthValue = document.getElementsByClassName('target_month-value');
+console.log(targetMonthValue);
 
 const salary = document.querySelector('.salary-amount');
 console.log(salary);
